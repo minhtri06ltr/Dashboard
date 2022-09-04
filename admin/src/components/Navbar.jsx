@@ -26,7 +26,7 @@ const NavButton = ({
       content={title}
       position="BottomCenter"
       className={`${
-        title == "Menu" && "md:hidden"
+        title == "Menu" && "md:invisible"
       }`}
     >
       <button
@@ -37,25 +37,29 @@ const NavButton = ({
       >
         <span
           style={{ background: dotColor }}
-          className="absolute rounded-full inline-flex h-5 w-5 right-2 top-2"
-        >
-          {icon}
-        </span>
+          className="absolute rounded-full inline-flex h-3 w-3 right-2 top-2"
+        />
+        {icon}
       </button>
     </TooltipComponent>
   );
 };
 const Navbar = () => {
-  const { activeMenu, setActiveMenu } =
-    useStateContext();
+  const {
+    activeMenu,
+    isClicked,
+    setIsClicked,
+    handleClick,
+    setActiveMenu,
+  } = useStateContext();
   return (
-    <div className=" flex justify-between items-center py-2 px-4 md:mx-6 relative">
+    <div className=" flex  justify-between items-center py-2 px-4 md:mx-6 relative">
       <NavButton
         color="blue"
         icon={<AiOutlineMenu />}
         title="Menu"
         func={() => {
-          setActiveMenu((pre) => !pre);
+          setActiveMenu(true);
         }}
       />
       <div className="flex">
@@ -63,27 +67,21 @@ const Navbar = () => {
           color="blue"
           icon={<FiShoppingCart />}
           title="Cart"
-          func={() => {
-            setActiveMenu((pre) => !pre);
-          }}
+          func={() => handleClick("cart")}
         />
         <NavButton
           color="blue"
           dotColor="#03C9D7"
           icon={<BsChatLeft />}
           title="Chat"
-          func={() => {
-            setActiveMenu((pre) => !pre);
-          }}
+          func={() => handleClick("chat")}
         />
         <NavButton
           color="blue"
           dotColor="#03C9D7"
           icon={<RiNotificationLine />}
           title="Notification"
-          func={() => {
-            setActiveMenu((pre) => !pre);
-          }}
+          func={() => handleClick("notification")}
         />
         <TooltipComponent
           content="Profile"
@@ -91,7 +89,9 @@ const Navbar = () => {
         >
           <div
             className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
-            onClick={() => {}}
+            onClick={() =>
+              handleClick("userProfile")
+            }
           >
             <img
               src={avatar}
@@ -105,9 +105,15 @@ const Navbar = () => {
                 Michael
               </span>
             </div>
-            <MdKeyboardArrowDown className=" text-14 text-gray-400" />
+            <MdKeyboardArrowDown className="text-14 text-gray-400" />
           </div>
         </TooltipComponent>
+        {isClicked.cart && <Cart />}
+        {isClicked.chat && <Chat />}
+        {isClicked.notification && (
+          <Notification />
+        )}
+        {isClicked.userProfile && <UserProfile />}
       </div>
     </div>
   );
