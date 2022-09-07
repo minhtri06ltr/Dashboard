@@ -24,7 +24,7 @@ const ECommerce = () => {
               <p className="font-bold text-[#5f3aa7]">
                 Earnings
               </p>
-              <p className="text-2xl ">
+              <p className="text-2xl font-semibold text-[#a53b9d] ">
                 $56.231.324
               </p>
             </div>
@@ -132,6 +132,20 @@ const ECommerce = () => {
                   data={SparklineAreaData}
                 />
               </div>
+              <div className="mt-10">
+                <Button
+                  color="white"
+                  bgColor="blue"
+                  text="Download Record"
+                  borderRadius="10px"
+                />
+              </div>
+            </div>
+            <div>
+              <Stacked
+                width="320px"
+                height="360px"
+              />
             </div>
           </div>
         </div>
