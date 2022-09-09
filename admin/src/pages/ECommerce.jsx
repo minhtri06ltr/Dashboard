@@ -15,10 +15,11 @@ import {
 import { useStateContext } from "../contexts/ContextProvider";
 
 const ECommerce = () => {
+  const { theme } = useStateContext();
   return (
-    <div className="mt-12">
+    <div className="mt-24">
       <div className="flex flex-wrap lg:flex-nowrap justify-center">
-        <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg  h-44 rounded-xl w-full lg:w-80 p-8 pt-9 bg-hero-pattern bg-no-repeat bg-cover bg-center">
+        <div className="bg-white m-3 dark:text-gray-200 dark:bg-secondary-dark-bg  h-44 rounded-xl w-full lg:w-80 p-8 pt-9 bg-hero-pattern bg-no-repeat bg-cover bg-center">
           <div className="flex justify-between items-center">
             <div>
               <p className="font-bold text-[#5f3aa7]">
@@ -32,7 +33,7 @@ const ECommerce = () => {
           <div className="mt-6">
             <Button
               color="white"
-              bgColor="blue"
+              bgColor={theme.currentColor}
               text="Download"
               borderRadius="10px"
               size="md"
@@ -43,7 +44,7 @@ const ECommerce = () => {
           {earningData.map((item) => (
             <div
               key={item.title}
-              className="bg-white flex flex-col items-center dark:text-gray-200 dark:bg-secondary-dark-bg  p-4 pt-9 rounded-2xl md:w-56 "
+              className="bg-white flex flex-col items-center dark:text-gray-200 dark:bg-secondary-dark-bg  px-4 pb-6 pt-9 rounded-2xl md:w-56 "
             >
               <button
                 className="text-2xl opacity-0.9 rounded-full p-4  hover:drop-shadow-xl"
@@ -123,10 +124,12 @@ const ECommerce = () => {
               </div>
               <div className="mt-5">
                 <SparkLine
-                  currentColor="blue"
+                  currentColor={
+                    theme.currentColor
+                  }
                   id="line-sparkline"
                   type="Line"
-                  color="blue"
+                  color={theme.currentColor}
                   height="80px"
                   width="250px"
                   data={SparklineAreaData}
@@ -135,7 +138,7 @@ const ECommerce = () => {
               <div className="mt-10">
                 <Button
                   color="white"
-                  bgColor="blue"
+                  bgColor={theme.currentColor}
                   text="Download Record"
                   borderRadius="10px"
                 />

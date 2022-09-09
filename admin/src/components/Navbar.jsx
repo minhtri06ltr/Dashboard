@@ -49,13 +49,14 @@ const Navbar = () => {
     activeMenu,
     isClicked,
     setIsClicked,
+    theme,
     handleClick,
     setActiveMenu,
   } = useStateContext();
   return (
     <div className=" flex  justify-between items-center py-2 px-4 md:mx-6 relative">
       <NavButton
-        color="blue"
+        color={theme.currentColor}
         icon={<AiOutlineMenu />}
         title="Menu"
         func={() => {
@@ -64,20 +65,20 @@ const Navbar = () => {
       />
       <div className="flex">
         <NavButton
-          color="blue"
+          color={theme.currentColor}
           icon={<FiShoppingCart />}
           title="Cart"
           func={() => handleClick("cart")}
         />
         <NavButton
-          color="blue"
+          color={theme.currentColor}
           dotColor="#03C9D7"
           icon={<BsChatLeft />}
           title="Chat"
           func={() => handleClick("chat")}
         />
         <NavButton
-          color="blue"
+          color={theme.currentColor}
           dotColor="#03C9D7"
           icon={<RiNotificationLine />}
           title="Notification"

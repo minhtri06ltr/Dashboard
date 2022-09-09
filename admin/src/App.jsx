@@ -35,10 +35,15 @@ import {
 import { useStateContext } from "./contexts/ContextProvider";
 
 const App = () => {
-  const { activeMenu } = useStateContext();
-  console.log(activeMenu);
+  const { activeMenu, theme, setTheme } =
+    useStateContext();
+
   return (
-    <div>
+    <div
+      className={`${
+        theme.mode === "Dark" ? "dark" : ""
+      }`}
+    >
       <BrowserRouter>
         <div className="flex relative dark:bg-main-dark-bg">
           <div
@@ -51,8 +56,16 @@ const App = () => {
             >
               <button
                 type="button"
-                style={{ background: "blue" }}
-                className="hover:drop-shadow-xl text-white rounded-full text-2xl p-3 hover:bg-light-gray"
+                onClick={() => {
+                  setTheme((pre) => ({
+                    ...pre,
+                    activeThemeSettings: true,
+                  }));
+                }}
+                style={{
+                  background: theme.currentColor,
+                }}
+                className="hover:drop-shadow-xl text-white rounded-full text-xl p-2.5 hover:bg-light-gray"
               >
                 <FiSettings />
               </button>
@@ -85,6 +98,9 @@ const App = () => {
             </div>
 
             <div>
+              {theme.activeThemeSettings && (
+                <ThemeSettings />
+              )}
               <Routes>
                 {/*Dashboard */}
                 <Route

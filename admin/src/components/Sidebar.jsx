@@ -7,7 +7,7 @@ import { useStateContext } from "../contexts/ContextProvider";
 import { links } from "../data/dummy";
 
 const Sidebar = () => {
-  const { activeMenu, setActiveMenu } =
+  const { activeMenu, theme, setActiveMenu } =
     useStateContext();
 
   return (
@@ -44,6 +44,11 @@ const Sidebar = () => {
             </span>
             {item.links.map((link) => (
               <NavLink
+                style={({ isActive }) => ({
+                  backgroundColor: isActive
+                    ? theme.currentColor
+                    : "",
+                })}
                 to={`/${link.name}`}
                 key={link.name}
                 onClick={() => {
