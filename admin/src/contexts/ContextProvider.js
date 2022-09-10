@@ -60,6 +60,7 @@ export const ContextProvider = ({ children }) => {
         handleClick,
         setColor,
         setMode,
+
         theme,
         setTheme,
       }}

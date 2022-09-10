@@ -9,10 +9,10 @@ import { useStateContext } from "../contexts/ContextProvider";
 const ThemeSettings = () => {
   const { theme, setTheme, setColor, setMode } =
     useStateContext();
-  console.log(theme);
+
   return (
     <div className="bg-half-transparent  w-screen fixed nav-item top-0 right-0">
-      <div className="float-right dark:text-gray-200 h-screen bg-white dark:[#4B4B52] fade-in-right w-400">
+      <div className="float-right dark:text-gray-200 h-screen dark:bg-secondary-dark-bg bg-white dark:[#4B4B52] fade-in-right w-400">
         <div className="flex justify-between items-center p-4 ml-4">
           <div>
             <span className="font-semibold text-xl">

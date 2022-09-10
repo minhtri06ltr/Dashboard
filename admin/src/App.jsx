@@ -35,8 +35,12 @@ import {
 import { useStateContext } from "./contexts/ContextProvider";
 
 const App = () => {
-  const { activeMenu, theme, setTheme } =
-    useStateContext();
+  const {
+    activeMenu,
+    setActiveMenu,
+    theme,
+    setTheme,
+  } = useStateContext();
 
   return (
     <div
@@ -61,6 +65,7 @@ const App = () => {
                     ...pre,
                     activeThemeSettings: true,
                   }));
+                  setActiveMenu(false);
                 }}
                 style={{
                   background: theme.currentColor,
@@ -71,15 +76,7 @@ const App = () => {
               </button>
             </TooltipComponent>
           </div>
-          {/* {activeMenu ? (
-            <div className="fade-in-left w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white">
-              <Sidebar />
-            </div>
-          ) : (
-            <div className="w-0 dark:bg-secondary-dark-bg">
-              Sidebar
-            </div>
-          )} */}
+
           <div
             className={`fade-in-left w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white ${
               activeMenu
