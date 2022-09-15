@@ -23,16 +23,21 @@ const Customers = () => {
       <Header title="Customers" category="Page" />
       <GridComponent
         dataSource={customersData}
+        enableHover={false}
         allowPaging
-        allowSorting
+        pageSettings={{ pageCount: 5 }}
+        selectionSettings={{
+          persistSelection: true,
+        }}
         toolbar={["Delete"]}
         editSettings={{
           allowDeleting: true,
           allowEditing: true,
         }}
-        width="auto"
+        allowSorting
       >
         <ColumnsDirective>
+          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
           {customersGrid.map((item, index) => (
             <ColumnDirective
               key={index}
@@ -42,12 +47,12 @@ const Customers = () => {
         </ColumnsDirective>
         <Inject
           services={[
-            Toolbar,
+            Page,
             Selection,
+            Toolbar,
             Edit,
             Sort,
             Filter,
-            Page,
           ]}
         />
       </GridComponent>

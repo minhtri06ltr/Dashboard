@@ -5,6 +5,7 @@ import {
   SeriesDirective,
   Inject,
   SplineAreaSeries,
+  Tooltip,
   DateTime,
   Legend,
 } from "@syncfusion/ej2-react-charts";
@@ -25,13 +26,23 @@ const Area = () => {
         title="Inflation Rate in Percentage"
       />
       <ChartComponent
+        titleStyle={{
+          color: "white",
+        }}
+        legendSettings={{
+          textStyle: {
+            color:
+              theme.mode === "Dark"
+                ? "white"
+                : "",
+          },
+        }}
         id="area-chart"
         background={
           theme.mode === "Dark"
             ? "#33373E"
             : "#fff"
         }
-        height="420px"
         primaryXAxis={areaPrimaryXAxis}
         primaryYAxis={areaPrimaryYAxis}
         tooltip={{ enable: true }}
@@ -42,6 +53,7 @@ const Area = () => {
             DateTime,
             SplineAreaSeries,
             Legend,
+            Tooltip,
           ]}
         />
         <SeriesCollectionDirective>

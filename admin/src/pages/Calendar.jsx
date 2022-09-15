@@ -12,7 +12,7 @@ import {
   Resize,
   DragAndDrop,
 } from "@syncfusion/ej2-react-schedule";
-import { DataPickerComponent } from "@syncfusion/ej2-react-calendars";
+
 import { Header } from "../components";
 import { scheduleData } from "../data/dummy";
 

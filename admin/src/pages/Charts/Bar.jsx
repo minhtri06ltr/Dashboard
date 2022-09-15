@@ -24,22 +24,31 @@ import { useStateContext } from "../../contexts/ContextProvider";
 const Bar = () => {
   const { theme } = useStateContext();
   return (
-    <div className="m-4 md:m-10 mt-24 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl">
+    <div className="m-4 dark:text-gray-500 md:m-10 mt-24 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl">
       <Header
         category="Bar"
         title="Inflation Rate in Percentage"
       />
       <ChartComponent
-        title="Olympic Medal Counts - RIO"
         id="bar-chart"
-        primaryXAxis={barPrimaryXAxis}
-        primaryYAxis={barPrimaryYAxis}
+        titleStyle={{
+          color: "white",
+        }}
+        legendSettings={{
+          textStyle: {
+            color:
+              theme.mode === "Dark"
+                ? "white"
+                : "",
+          },
+        }}
         background={
           theme.mode === "Dark"
             ? "#33373E"
             : "#fff"
         }
-        height="420px"
+        primaryXAxis={barPrimaryXAxis}
+        primaryYAxis={barPrimaryYAxis}
         tooltip={{ enable: true }}
       >
         <Inject

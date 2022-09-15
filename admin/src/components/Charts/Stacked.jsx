@@ -14,6 +14,7 @@ import {
   stackedPrimaryXAxis,
   stackedPrimaryYAxis,
 } from "../../data/dummy";
+import { useStateContext } from "../../contexts/ContextProvider";
 
 const Stacked = ({
   width,
@@ -21,6 +22,7 @@ const Stacked = ({
   color,
   bgColor,
 }) => {
+  const { theme } = useStateContext();
   return (
     <ChartComponent
       id="stack-chart"
@@ -30,7 +32,15 @@ const Stacked = ({
       primaryYAxis={stackedPrimaryYAxis}
       width={width}
       height={height}
-      legendSettings={{ background: "white" }}
+      legendSettings={{
+        textStyle: {
+          color:
+            theme.mode === "Dark" ? "white" : "",
+        },
+      }}
+      background={
+        theme.mode === "Dark" ? "#33373E" : "#fff"
+      }
     >
       <Inject
         services={[

@@ -235,6 +235,7 @@ export const barPrimaryYAxis = {
   majorGridLines: { width: 0 },
   majorTickLines: { width: 0 },
   lineStyle: { width: 0 },
+
   labelStyle: { color: "transparent" },
 };
 const areaChartData = [

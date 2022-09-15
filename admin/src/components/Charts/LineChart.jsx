@@ -20,6 +20,15 @@ const LineChart = () => {
   const { theme } = useStateContext();
   return (
     <ChartComponent
+      titleStyle={{
+        color: "white",
+      }}
+      legendSettings={{
+        textStyle: {
+          color:
+            theme.mode === "Dark" ? "white" : "",
+        },
+      }}
       id="line-chart"
       background={
         theme.mode === "Dark" ? "#33373E" : "#fff"

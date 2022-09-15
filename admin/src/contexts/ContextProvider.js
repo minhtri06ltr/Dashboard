@@ -25,8 +25,14 @@ export const ContextProvider = ({ children }) => {
     });
   };
   const [theme, setTheme] = useState({
-    currentColor: "#03C9D7",
-    mode: "Dark",
+    currentColor: localStorage.getItem(
+      "themeColor",
+    )
+      ? localStorage.getItem("themeColor")
+      : "#03C9D7",
+    mode: localStorage.getItem("themeMode")
+      ? localStorage.getItem("themeMode")
+      : "Dark",
     activeThemeSettings: false,
   });
 
