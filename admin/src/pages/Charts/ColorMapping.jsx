@@ -6,8 +6,7 @@ import {
   Inject,
   ColumnSeries,
   Category,
-  Highlight,
-  DataLabel,
+ 
   Tooltip,
   Legend,
   RangeColorSettingsDirective,
@@ -30,77 +29,56 @@ const ColorMappingData = () => {
         category="Color Mapping Data"
         title="Inflation Rate in Percentage"
       />
-      <ChartComponent
-        highlightMode="Point"
-        highlightPattern="DiagonalForward"
-        titleStyle={{
-          color: "white",
-        }}
-        legendSettings={{
-          textStyle: {
-            color:
-              theme.mode === "Dark"
-                ? "white"
-                : "",
-          },
-          visible: true,
-          toggleVisibility: false,
-          mode: "Range",
-        }}
-        id="colorMapping-chart"
-        background={
-          theme.mode === "Dark"
-            ? "#33373E"
-            : "#fff"
-        }
-        primaryXAxis={ColorMappingPrimaryXAxis}
-        primaryYAxis={ColorMappingPrimaryYAxis}
-        tooltip={{ enable: true }}
-        chartArea={{ border: { width: 0 } }}
-      >
-        <Inject
-          services={[
-            ColumnSeries,
-            Highlight,
-            DataLabel,
-            Tooltip,
-            Category,
-            Legend,
-          ]}
-        />
-        <SeriesCollectionDirective>
-          <SeriesDirective
-            dataSource={colorMappingData[0]}
-            name="USA"
-            xName="x"
-            yName="y"
-            type="Column"
-            marker={{
-              dataLabel: {
-                visible: true,
-                position: "Outer",
-              },
-            }}
-            cornerRadius={{
-              topLeft: 10,
-              topRight: 10,
-            }}
-          ></SeriesDirective>
-        </SeriesCollectionDirective>
-        <RangeColorSettingsDirective>
-          {rangeColorMapping.map(
-            (item, index) => (
-              <RangeColorSettingDirective
-                key={index}
-                label={item.label}
-                start={item.start}
-                end={item.end}
-                colors={item.colors}
-              ></RangeColorSettingDirective>
-            ),
-          )}
-        </RangeColorSettingsDirective>
-      </ChartComponent>
+      <div className="w-full">
+        <ChartComponent
+          id="charts"
+          primaryXAxis={ColorMappingPrimaryXAxis}
+          primaryYAxis={ColorMappingPrimaryYAxis}
+          chartArea={{ border: { width: 0 } }}
+          legendSettings={{
+            mode: "Range",
+            background: "white",
+          }}
+          tooltip={{ enable: true }}
+          background={
+            theme.mode === "Dark"
+              ? "#33373E"
+              : "#fff"
+          }
+        >
+          <Inject
+            services={[
+              ColumnSeries,
+              Tooltip,
+              Category,
+              Legend,
+            ]}
+          />
+          <SeriesCollectionDirective>
+            <SeriesDirective
+              dataSource={colorMappingData[0]}
+              name="USA"
+              xName="x"
+              yName="y"
+              type="Column"
+              cornerRadius={{
+                topLeft: 10,
+                topRight: 10,
+              }}
+            />
+          </SeriesCollectionDirective>
+          <RangeColorSettingsDirective>
+            {rangeColorMapping.map(
+              (item, index) => (
+                <RangeColorSettingDirective
+                  key={index}
+                  {...item}
+                />
+              ),
+            )}
+          </RangeColorSettingsDirective>
+        </ChartComponent>
+      </div>
     </div>
   );
 };

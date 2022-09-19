@@ -10,7 +10,7 @@ import {
   Tooltip,
   Zoom,
   Logarithmic,
-  Legend,
+
 } from "@syncfusion/ej2-react-charts";
 import {
   financialChartData,
@@ -19,6 +19,14 @@ import {
 } from "../../data/dummy";
 import { Header } from "../../components";
 import { useStateContext } from "../../contexts/ContextProvider";
+const date1 = new Date("2017, 1, 1");
+function filterValue(value) {
+  if (value.x >= date1) {
+    return value.x, value.high, value.low;
+  }
+}
+const returnValue =
+  financialChartData.filter(filterValue);
 
 const Financial = () => {
   const { theme } = useStateContext();
@@ -26,59 +34,49 @@ const Financial = () => {
     <div className="m-4 md:m-10 mt-24 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl">
       <Header
         category="Financial"
-        title="Inflation Rate in Percentage"
+        title="AAPLE Historical"
       />
-      <ChartComponent
-        titleStyle={{
-          color: "white",
-        }}
-        legendSettings={{
-          textStyle: {
-            color:
-              theme.mode === "Dark"
-                ? "white"
-                : "",
-          },
-          visible: true,
-        }}
-        id="financial-chart"
-        background={
-          theme.mode === "Dark"
-            ? "#33373E"
-            : "#fff"
-        }
-        crosshair={{
-          enable: true,
-          lineType: "Vertical",
-          line: { width: 0 },
-        }}
-        primaryXAxis={FinancialPrimaryXAxis}
-        primaryYAxis={FinancialPrimaryYAxis}
-        tooltip={{ enable: true, shared: true }}
-        chartArea={{ border: { width: 0 } }}
-      >
-        <Inject
-          services={[
-            DateTime,
-            Crosshair,
-            Legend,
-            HiloSeries,
-            Tooltip,
-            Logarithmic,
-            Zoom,
-          ]}
-        />
-        <SeriesCollectionDirective>
-          <SeriesDirective
-            dataSource={financialChartData}
-            type="Hilo"
-            xName="x"
-            yName="low"
-            high="high"
-            low="low"
+      <div className="w-full">
+        <ChartComponent
+          id="charts"
+          primaryXAxis={FinancialPrimaryXAxis}
+          primaryYAxis={FinancialPrimaryYAxis}
+          chartArea={{ border: { width: 0 } }}
+          tooltip={{ enable: true, shared: true }}
+          crosshair={{
+            enable: true,
+            lineType: "Vertical",
+            line: { width: 0 },
+          }}
+          background={
+            theme.mode === "Dark"
+              ? "#33373E"
+              : "#fff"
+          }
+        >
+          <Inject
+            services={[
+              HiloSeries,
+              Tooltip,
+              DateTime,
+              Logarithmic,
+              Crosshair,
+              Zoom,
+            ]}
           />
-        </SeriesCollectionDirective>
-      </ChartComponent>
+          <SeriesCollectionDirective>
+            <SeriesDirective
+              dataSource={returnValue}
+              xName="x"
+              yName="low"
+              name="Apple Inc"
+              type="Hilo"
+              low="low"
+              high="high"
+            />
+          </SeriesCollectionDirective>
+        </ChartComponent>
+      </div>
     </div>
   );
 };

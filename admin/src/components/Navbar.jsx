@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { FiShoppingCart } from "react-icons/fi";
 import { BsChatLeft } from "react-icons/bs";
@@ -25,9 +25,6 @@ const NavButton = ({
     <TooltipComponent
       content={title}
       position="BottomCenter"
-      className={`${
-        title == "Menu" && "md:invisible"
-      }`}
     >
       <button
         type="button"
@@ -37,7 +34,7 @@ const NavButton = ({
       >
         <span
           style={{ background: dotColor }}
-          className="absolute rounded-full inline-flex h-3 w-3 right-2 top-2"
+          className="absolute rounded-full inline-flex h-2 w-2 right-2 top-2"
         />
         {icon}
       </button>
@@ -60,7 +57,7 @@ const Navbar = () => {
         icon={<AiOutlineMenu />}
         title="Menu"
         func={() => {
-          setActiveMenu(true);
+          setActiveMenu((pre) => !pre);
         }}
       />
       <div className="flex">
@@ -79,7 +76,7 @@ const Navbar = () => {
         />
         <NavButton
           color={theme.currentColor}
-          dotColor="#03C9D7"
+          dotColor="#FEC90F"
           icon={<RiNotificationLine />}
           title="Notification"
           func={() => handleClick("notification")}

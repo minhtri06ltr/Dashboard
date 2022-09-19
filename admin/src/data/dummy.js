@@ -222,7 +222,7 @@ export const areaPrimaryYAxis = {
   lineStyle: { width: 0 },
   maximum: 4,
   interval: 1,
-  majorTickLines: { width: 0 },
+  majorTickLines: { width: 0 }, //Y axis
   minorTickLines: { width: 0 },
   labelStyle: { color: "gray" },
 };
@@ -235,7 +235,6 @@ export const barPrimaryYAxis = {
   majorGridLines: { width: 0 },
   majorTickLines: { width: 0 },
   lineStyle: { width: 0 },
-
   labelStyle: { color: "transparent" },
 };
 const areaChartData = [
@@ -453,7 +452,7 @@ export const FinancialPrimaryYAxis = {
 };
 
 export const LinePrimaryXAxis = {
-  valueType: "DateTime",
+  valueType: "DateTime", //category
   labelFormat: "y",
   intervalType: "Years",
   edgeLabelPlacement: "Shift",
@@ -462,11 +461,11 @@ export const LinePrimaryXAxis = {
 };
 
 export const LinePrimaryYAxis = {
-  labelFormat: "{value}%",
+  labelFormat: "{value}%", //label Y axis
   rangePadding: "None",
   minimum: 0,
   maximum: 100,
-  interval: 20,
+  interval: 20, //distance
   lineStyle: { width: 0 },
   majorTickLines: { width: 0 },
   minorTickLines: { width: 0 },
@@ -718,7 +717,7 @@ export const earningData = [
     title: "Customers",
     iconColor: "#03C9D7",
     iconBg: "#E5FAFB",
-    pcColor: "red-600",
+    pcColor: "#DC2626",
   },
   {
     icon: <BsBoxSeam />,
@@ -727,7 +726,7 @@ export const earningData = [
     title: "Products",
     iconColor: "rgb(255, 244, 229)",
     iconBg: "rgb(254, 201, 15)",
-    pcColor: "green-600",
+    pcColor: "#16A34A",
   },
   {
     icon: <FiBarChart />,
@@ -737,7 +736,7 @@ export const earningData = [
     iconColor: "rgb(228, 106, 118)",
     iconBg: "rgb(255, 244, 229)",
 
-    pcColor: "green-600",
+    pcColor: "#16A34A",
   },
   {
     icon: <HiOutlineRefresh />,
@@ -746,7 +745,7 @@ export const earningData = [
     title: "Refunds",
     iconColor: "rgb(0, 194, 146)",
     iconBg: "rgb(235, 250, 242)",
-    pcColor: "red-600",
+    pcColor: "#DC2626",
   },
 ];
 
@@ -758,7 +757,7 @@ export const recentTransactions = [
     desc: "Money Added",
     iconColor: "#03C9D7",
     iconBg: "#E5FAFB",
-    pcColor: "green-600",
+    pcColor: "#16A34A",
   },
   {
     icon: <BsShield />,
@@ -767,7 +766,7 @@ export const recentTransactions = [
     title: "Wallet",
     iconColor: "rgb(0, 194, 146)",
     iconBg: "rgb(235, 250, 242)",
-    pcColor: "red-600",
+    pcColor: "#DC2626",
   },
   {
     icon: <FiCreditCard />,
@@ -777,7 +776,7 @@ export const recentTransactions = [
     iconColor: "rgb(255, 244, 229)",
     iconBg: "rgb(254, 201, 15)",
 
-    pcColor: "green-600",
+    pcColor: "#16A34A",
   },
   {
     icon: <TiTick />,
@@ -787,7 +786,7 @@ export const recentTransactions = [
 
     iconColor: "rgb(228, 106, 118)",
     iconBg: "rgb(255, 244, 229)",
-    pcColor: "green-600",
+    pcColor: "#16A34A",
   },
   {
     icon: <BsCurrencyDollar />,
@@ -797,7 +796,7 @@ export const recentTransactions = [
     desc: "Payment Sent",
     iconColor: "#03C9D7",
     iconBg: "#E5FAFB",
-    pcColor: "red-600",
+    pcColor: "#DC2626",
   },
 ];
 
@@ -808,7 +807,7 @@ export const weeklyStats = [
     title: "Top Sales",
     desc: "Johnathan Doe",
     iconBg: "#FB9678",
-    pcColor: "red-600",
+    pcColor: "#DC2626",
   },
   {
     icon: <FiStar />,
@@ -816,7 +815,7 @@ export const weeklyStats = [
     title: "Best Seller",
     desc: "MaterialPro Admin",
     iconBg: "rgb(254, 201, 15)",
-    pcColor: "red-600",
+    pcColor: "#DC2626",
   },
   {
     icon: <BsChatLeft />,
@@ -824,7 +823,7 @@ export const weeklyStats = [
     title: "Most Commented",
     desc: "Ample Admin",
     iconBg: "#00C292",
-    pcColor: "green-600",
+    pcColor: "#163A4A",
   },
 ];
 
@@ -3022,11 +3021,11 @@ export const dropdownData = [
   },
 ];
 export const SparklineAreaData = [
-  { x: 0, xval: 1, yval: 2 },
-  { x: 1, xval: 2, yval: 6 },
-  { x: 2, xval: 3, yval: 8 },
-  { x: 3, xval: 4, yval: 5 },
-  { x: 4, xval: 5, yval: 10 },
+  { x: 1, yval: 2 },
+  { x: 2, yval: 6 },
+  { x: 3, yval: 8 },
+  { x: 4, yval: 5 },
+  { x: 5, yval: 10 },
 ];
 
 export const lineCustomSeries = [

@@ -41,22 +41,23 @@ const App = () => {
     theme,
     setTheme,
   } = useStateContext();
-
+  console.log(activeMenu);
   return (
     <div
-      className={`${
+      className={
         theme.mode === "Dark" ? "dark" : ""
-      }`}
+      }
     >
       <BrowserRouter>
         <div className="flex relative dark:bg-main-dark-bg">
+          {/*Setting button */}
           <div
-            className="fixed bottom-4 right-4"
+            className="fixed right-4 bottom-4"
             style={{ zIndex: "1000" }}
           >
             <TooltipComponent
-              position="TopCenter"
               content="Settings"
+              position="Top"
             >
               <button
                 type="button"
@@ -69,31 +70,34 @@ const App = () => {
                 }}
                 style={{
                   background: theme.currentColor,
+                  borderRadius: "50%",
                 }}
-                className="hover:drop-shadow-xl text-white rounded-full text-xl p-2.5 hover:bg-light-gray"
+                className="text-3xl text-white p-3 hover:drop-shadow-xl hover:bg-light-gray"
               >
                 <FiSettings />
               </button>
             </TooltipComponent>
           </div>
-
+          {/*Sidebar */}
+          {
+            <div
+              className={`w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white ${
+                activeMenu ? "block" : "hidden"
+              }`}
+            >
+              <Sidebar />
+            </div>
+          }
           <div
-            className={`fade-in-left w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white ${
+            className={
               activeMenu
-                ? "block"
-                : "hidden md:block"
-            }`}
+                ? "dark:bg-main-dark-bg  bg-main-bg min-h-screen md:ml-72 w-full  "
+                : "bg-main-bg dark:bg-main-dark-bg  w-full min-h-screen flex-2 "
+            }
           >
-            <Sidebar />
-          </div>
-
-          <div
-            className={`dark:bg-main-dark-bg md:ml-72 bg-main-bg min-h-screen w-full`}
-          >
-            <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full">
+            <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full ">
               <Navbar />
             </div>
-
             <div>
               {theme.activeThemeSettings && (
                 <ThemeSettings />
@@ -172,6 +176,7 @@ const App = () => {
                   element={<Stacked />}
                 />
               </Routes>
+              <Footer />
             </div>
           </div>
         </div>

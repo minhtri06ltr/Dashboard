@@ -3,30 +3,29 @@ import {
   AccumulationChartComponent,
   AccumulationSeriesCollectionDirective,
   AccumulationSeriesDirective,
-  Inject,
   AccumulationLegend,
   PieSeries,
+  AccumulationDataLabel,
+  Inject,
   AccumulationTooltip,
 } from "@syncfusion/ej2-react-charts";
-import { pieChartData } from "../../data/dummy";
 import { useStateContext } from "../../contexts/ContextProvider";
 
-const Pie = () => {
+const Pie = ({
+  id,
+  data,
+  height,
+  legendVisibility,
+}) => {
   const { theme } = useStateContext();
   return (
     <AccumulationChartComponent
-      titleStyle={{
-        color: "white",
-      }}
+      id={id}
       legendSettings={{
-        textStyle: {
-          color:
-            theme.mode === "Dark" ? "white" : "",
-        },
-        visible: true,
+        visible: legendVisibility,
+        background: "white",
       }}
-      enableSmartLabels={true}
-      id="pie-chart"
+      height={height}
       background={
         theme.mode === "Dark" ? "#33373E" : "#fff"
       }
@@ -36,17 +35,33 @@ const Pie = () => {
         services={[
           AccumulationLegend,
           PieSeries,
+          AccumulationDataLabel,
           AccumulationTooltip,
         ]}
       />
       <AccumulationSeriesCollectionDirective>
         <AccumulationSeriesDirective
-          dataSource={pieChartData}
-          type="Pie"
+          name="Sale"
+          dataSource={data}
           xName="x"
           yName="y"
-          dataLabel={{ visible: true }}
-        ></AccumulationSeriesDirective>
+          innerRadius="40%" // inner pie circle
+          startAngle={0} //start pie
+          endAngle={360}
+          radius="70%"
+          explode
+          explodeOffset="30%" // slice pie
+          explodeIndex={2} // slice pie position
+          dataLabel={{
+            visible: true,
+            name: "text",
+            position: "Inside",
+            font: {
+              fontWeight: "600",
+              color: "#fff",
+            },
+          }}
+        />
       </AccumulationSeriesCollectionDirective>
     </AccumulationChartComponent>
   );

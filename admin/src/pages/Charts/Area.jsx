@@ -25,46 +25,40 @@ const Area = () => {
         category="Area"
         title="Inflation Rate in Percentage"
       />
-      <ChartComponent
-        titleStyle={{
-          color: "white",
-        }}
-        legendSettings={{
-          textStyle: {
-            color:
-              theme.mode === "Dark"
-                ? "white"
-                : "",
-          },
-        }}
-        id="area-chart"
-        background={
-          theme.mode === "Dark"
-            ? "#33373E"
-            : "#fff"
-        }
-        primaryXAxis={areaPrimaryXAxis}
-        primaryYAxis={areaPrimaryYAxis}
-        tooltip={{ enable: true }}
-        chartArea={{ border: { width: 0 } }}
-      >
-        <Inject
-          services={[
-            DateTime,
-            SplineAreaSeries,
-            Legend,
-            Tooltip,
-          ]}
-        />
-        <SeriesCollectionDirective>
-          {areaCustomSeries.map((item, index) => (
-            <SeriesDirective
-              key={index}
-              {...item}
-            />
-          ))}
-        </SeriesCollectionDirective>
-      </ChartComponent>
+      <div className="w-full">
+        <ChartComponent
+          id="charts"
+          tooltip={{ enable: true }}
+          primaryXAxis={areaPrimaryXAxis}
+          primaryYAxis={areaPrimaryYAxis}
+          chartArea={{ border: { width: 0 } }}
+          background={
+            theme.mode === "Dark"
+              ? "#33373E"
+              : "#fff"
+          }
+          legendSettings={{ background: "white" }}
+        >
+          <Inject
+            services={[
+              SplineAreaSeries,
+              DateTime,
+              Legend,
+              Tooltip,
+            ]}
+          />
+          <SeriesCollectionDirective>
+            {areaCustomSeries.map(
+              (item, index) => (
+                <SeriesDirective
+                  key={index}
+                  {...item}
+                />
+              ),
+            )}
+          </SeriesCollectionDirective>
+        </ChartComponent>
+      </div>
     </div>
   );
 };

@@ -16,28 +16,18 @@ import {
 } from "../../data/dummy";
 import { useStateContext } from "../../contexts/ContextProvider";
 
-const Stacked = ({
-  width,
-  height,
-  color,
-  bgColor,
-}) => {
+const Stacked = ({ width, height }) => {
   const { theme } = useStateContext();
   return (
     <ChartComponent
-      id="stack-chart"
+      id="stack-chart-component"
       tooltip={{ enable: true }}
       chartArea={{ border: { width: 0 } }}
       primaryXAxis={stackedPrimaryXAxis}
       primaryYAxis={stackedPrimaryYAxis}
       width={width}
       height={height}
-      legendSettings={{
-        textStyle: {
-          color:
-            theme.mode === "Dark" ? "white" : "",
-        },
-      }}
+      legendSettings={{ background: "white" }}
       background={
         theme.mode === "Dark" ? "#33373E" : "#fff"
       }

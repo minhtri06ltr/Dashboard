@@ -15,7 +15,7 @@ const initialState = {
 
 export const ContextProvider = ({ children }) => {
   const [activeMenu, setActiveMenu] =
-    useState(false);
+    useState(true);
   const [isClicked, setIsClicked] =
     useState(initialState);
   const handleClick = (clicked) => {

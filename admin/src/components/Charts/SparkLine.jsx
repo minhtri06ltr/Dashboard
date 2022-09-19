@@ -14,31 +14,37 @@ const SparkLine = ({
   type,
   currentColor,
 }) => {
+  console.log(data);
   return (
-    <>
-      <SparklineComponent
-        id={id}
-        height={height}
-        width={width}
-        lineWidth={1}
-        valueType="Numeric"
-        fill={color}
-        border={{ color: currentColor, width: 2 }}
-        dataSource={data}
-        xName="xval"
-        yName="yval"
-        type={type}
-        tooltipSettings={{
+    <SparklineComponent
+      id={id}
+      height={height}
+      width={width}
+      lineWidth={2}
+      valueType="Numeric"
+      fill={color} // line color
+      border={{ color: currentColor, width: 2 }}
+      tooltipSettings={{
+        visible: true,
+        // eslint-disable-next-line no-template-curly-in-string
+        format: "${x} : data ${yval}",
+        trackLineSettings: {
           visible: true,
-          trackLineSettings: {
-            visible: true,
-          },
-          format: "${xval} : data ${yval}",
-        }}
-      >
-        <Inject services={[SparklineTooltip]} />
-      </SparklineComponent>
-    </>
+        },
+      }}
+      markerSettings={{
+        //dot setting
+        visible: ["All"],
+        size: 4,
+        fill: "green",
+      }}
+      dataSource={data}
+      xName="x"
+      yName="yval"
+      type={type}
+    >
+      <Inject services={[SparklineTooltip]} />
+    </SparklineComponent>
   );
 };
 

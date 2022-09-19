@@ -4,8 +4,6 @@ import {
   SeriesCollectionDirective,
   SeriesDirective,
   Inject,
-  SplineAreaSeries,
-  DateTime,
   Legend,
   Tooltip,
   Category,
@@ -13,7 +11,6 @@ import {
   DataLabel,
 } from "@syncfusion/ej2-react-charts";
 import {
-  barChartData,
   barCustomSeries,
   barPrimaryXAxis,
   barPrimaryYAxis,
@@ -27,48 +24,43 @@ const Bar = () => {
     <div className="m-4 dark:text-gray-500 md:m-10 mt-24 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl">
       <Header
         category="Bar"
-        title="Inflation Rate in Percentage"
+        title="Olympic Medal Counts - RIO"
       />
-      <ChartComponent
-        id="bar-chart"
-        titleStyle={{
-          color: "white",
-        }}
-        legendSettings={{
-          textStyle: {
-            color:
-              theme.mode === "Dark"
-                ? "white"
-                : "",
-          },
-        }}
-        background={
-          theme.mode === "Dark"
-            ? "#33373E"
-            : "#fff"
-        }
-        primaryXAxis={barPrimaryXAxis}
-        primaryYAxis={barPrimaryYAxis}
-        tooltip={{ enable: true }}
-      >
-        <Inject
-          services={[
-            ColumnSeries,
-            Legend,
-            Tooltip,
-            Category,
-            DataLabel,
-          ]}
-        />
-        <SeriesCollectionDirective>
-          {barCustomSeries.map((item, index) => (
-            <SeriesDirective
-              key={index}
-              {...item}
-            />
-          ))}
-        </SeriesCollectionDirective>
-      </ChartComponent>
+      <div className=" w-full">
+        <ChartComponent
+          id="charts"
+          primaryXAxis={barPrimaryXAxis}
+          primaryYAxis={barPrimaryYAxis}
+          chartArea={{ border: { width: 0 } }}
+          tooltip={{ enable: true }}
+          background={
+            theme.mode === "Dark"
+              ? "#33373E"
+              : "#fff"
+          }
+          legendSettings={{ background: "white" }}
+        >
+          <Inject
+            services={[
+              ColumnSeries,
+              Legend,
+              Tooltip,
+              Category,
+              DataLabel,
+            ]}
+          />
+          <SeriesCollectionDirective>
+            {barCustomSeries.map(
+              (item, index) => (
+                <SeriesDirective
+                  key={index}
+                  {...item}
+                />
+              ),
+            )}
+          </SeriesCollectionDirective>
+        </ChartComponent>
+      </div>
     </div>
   );
 };
