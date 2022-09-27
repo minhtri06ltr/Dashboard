@@ -7,11 +7,11 @@ import { useStateContext } from "../contexts/ContextProvider";
 import { links } from "../data/dummy";
 
 const Sidebar = () => {
-  const { activeMenu, theme, setActiveMenu } =
+  const { theme, setActiveMenu } =
     useStateContext();
 
   return (
-    <div className=" ml-3  h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10 ">
+    <div className=" ml-3  h-screen md:overflow-hidden overflow-auto  md:hover:overflow-auto pb-10 ">
       <div className="  flex justify-between items-center">
         <Link
           to="/"

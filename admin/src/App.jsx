@@ -1,6 +1,5 @@
 import "./App.css";
 
-import { useEffect } from "react";
 import {
   BrowserRouter,
   Routes,
@@ -81,7 +80,7 @@ const App = () => {
           {/*Sidebar */}
           {
             <div
-              className={`w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white ${
+              className={`w-72 fixed sidebar fade-in-left dark:bg-secondary-dark-bg bg-white ${
                 activeMenu ? "block" : "hidden"
               }`}
             >

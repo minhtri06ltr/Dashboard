@@ -43,9 +43,8 @@ const NavButton = ({
 };
 const Navbar = () => {
   const {
-    activeMenu,
     isClicked,
-    setIsClicked,
+
     theme,
     handleClick,
     setActiveMenu,
@@ -92,6 +91,7 @@ const Navbar = () => {
             }
           >
             <img
+              alt="Admin avatar"
               src={avatar}
               className="rounded-full w-8 h-8"
             />
